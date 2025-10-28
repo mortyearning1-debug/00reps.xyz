@@ -8,7 +8,7 @@ export function Footer() {
         
 
         <div className="mt-12 pt-8 border-t text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} RepMafia. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} 00REPS. All rights reserved.</p>
         </div>
       </div>
     </footer>
