@@ -5,7 +5,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Badge } from "@/components/ui/badge"
-import { incrementProductViews } from "@/app/actions/increment-views"
+import { getSupabaseBrowserClient } from "@/lib/supabase/client"
 import type { Product } from "@/lib/types"
 import Image from "next/image"
 import { ShoppingBag, Eye, ChevronDown } from "lucide-react"
@@ -37,7 +37,21 @@ export function ProductModal({ product, open, onOpenChange }: ProductModalProps)
 
   useEffect(() => {
     if (open && product) {
-      incrementProductViews(product.id)
+      const incrementViews = async () => {
+        try {
+          const supabase = getSupabaseBrowserClient()
+          const { error } = await supabase.rpc("increment_product_views", {
+            product_id: product.id,
+          })
+          if (error) {
+            console.error("[v0] Error incrementing views:", error)
+          }
+        } catch (error) {
+          console.error("[v0] Error:", error)
+        }
+      }
+      incrementViews()
+
       // Set default selections
       if (product.colors && product.colors.length > 0) {
         setSelectedColor(product.colors[0])

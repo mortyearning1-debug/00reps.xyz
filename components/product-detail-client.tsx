@@ -9,7 +9,6 @@ import { Badge } from "@/components/ui/badge"
 import { Label } from "@/components/ui/label"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { getSupabaseBrowserClient } from "@/lib/supabase/client"
-import { incrementProductViews } from "@/app/actions/increment-views"
 import { AgentSelector, AGENTS } from "@/components/agent-selector"
 import type { Product } from "@/lib/types"
 import Image from "next/image"
@@ -43,7 +42,13 @@ export function ProductDetailClient({ productId }: ProductDetailClientProps) {
 
         setProduct(data)
 
-        await incrementProductViews(productId)
+        const { error: viewError } = await supabase.rpc("increment_product_views", {
+          product_id: productId,
+        })
+
+        if (viewError) {
+          console.error("[v0] Error incrementing views:", viewError)
+        }
 
         if (data.colors && data.colors.length > 0) {
           setSelectedColor(data.colors[0])
