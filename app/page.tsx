@@ -88,24 +88,7 @@ export default function HomePage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 md:py-24">
-          <div className="container mx-auto px-4">
-            <Card className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground border-none">
-              <CardContent className="p-8 md:p-12 text-center space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold">Ready to Start Shopping?</h2>
-                <p className="text-lg opacity-90 max-w-2xl mx-auto">
-                  Join thousands of satisfied customers and discover the best replica fashion deals
-                </p>
-                <Button size="lg" variant="secondary" asChild>
-                  <Link href="/w2c">
-                    Explore All Products
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
+        
       </main>
 
       <Footer />
