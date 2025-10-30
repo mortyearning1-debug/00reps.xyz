@@ -66,37 +66,7 @@ export default function HomePage() {
         </section>
 
         {/* Categories Section */}
-        <section className="py-16 md:py-24">
-          <div className="container mx-auto px-4">
-            <div className="text-center space-y-4 mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold">Shop by Category</h2>
-              <p className="text-muted-foreground text-lg">Explore our wide range of products</p>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
-              {categories.map((category) => (
-                <Link key={category.name} href={`/w2c?category=${category.name}`}>
-                  <Card className="group overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer">
-                    <CardContent className="p-0">
-                      <div className="relative aspect-square overflow-hidden">
-                        <Image
-                          src={category.image || "/placeholder.svg"}
-                          alt={category.name}
-                          fill
-                          className="object-cover group-hover:scale-110 transition-transform duration-300"
-                        />
-                      </div>
-                      <div className="p-4 text-center">
-                        <h3 className="font-semibold">{category.name}</h3>
-                        <p className="text-sm text-muted-foreground">{category.count} items</p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
+        
 
         {/* Features Section */}
         <section className="py-16 md:py-24 bg-muted/50">
